@@ -12,6 +12,11 @@ let initialState = {
 
 export const movies = (state = initialState, {type, payload}) => {
     switch(type) {
+        case GET_MOVIES_START:
+            return {
+                ...state,
+                movies: []
+            }
         case GET_MOVIES_SUCCESS:
             return {
                 ...state,
