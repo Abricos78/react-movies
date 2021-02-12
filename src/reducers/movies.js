@@ -15,24 +15,25 @@ export const movies = (state = initialState, {type, payload}) => {
         case GET_MOVIES_START:
             return {
                 ...state,
-                movies: []
+                loading: true 
             }
         case GET_MOVIES_SUCCESS:
             return {
                 ...state,
-                movies: payload
+                movies: payload,
+                loading: false
             }
         default:
             return state
     }
 }
 
-export const getMovies = (name = 'matrix') => async dispatch => {
+export const getMovies = (name = 'matrix', type = 'all') => async dispatch => {
     dispatch({
         type: GET_MOVIES_START
     })
     try {
-        const movies = await getMoviesApi(name)
+        const movies = await getMoviesApi(name, type)
         dispatch({
             type: GET_MOVIES_SUCCESS,
             payload: movies

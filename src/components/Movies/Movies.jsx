@@ -12,15 +12,18 @@ class Movies extends Component {
     }
 
     render() {
-        const { movies } = this.props
+        const { movies, loading } = this.props
         return (
             <div>
-                {movies.length ? 
-                    <div className='movies'>
-                        {movies.map(movie => <Movie key={movie.imdbID} {...movie} />)}
-                    </div>
+                {movies ? 
+                    loading ? 
+                        <Preloader />
+                    :
+                        <div className='movies'>
+                            {movies.map(movie => <Movie key={movie.imdbID} {...movie} />)}
+                        </div>          
                 :
-                    <Preloader />
+                    <h1>Undefined</h1>
                 }
             </div>
         )
@@ -29,7 +32,8 @@ class Movies extends Component {
 
 let mapStateToProps = state => {
     return {
-        movies: state.movies.movies
+        movies: state.movies.movies,
+        loading: state.movies.loading
     }
 },
 mapDispatchToProps = {
