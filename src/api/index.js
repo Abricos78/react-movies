@@ -3,7 +3,7 @@ import axios from "axios"
 const API_KEY = process.env.REACT_APP_API_KEY
 
 const instance = axios.create({
-    baseURL: 'http://www.omdbapi.com'
+    baseURL: 'https://www.omdbapi.com'
 })
 
 
