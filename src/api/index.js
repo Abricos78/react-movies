@@ -10,5 +10,8 @@ const instance = axios.create({
 export const getMovies = async (name, type) => {
     let searchType = type === 'all' ? '' : type
     let response = await instance.get(`?apikey=${API_KEY}&s=${name}${searchType && `&type=${type}`}`)
-    return response.data.Search
+    return {
+        data: response.data.Search,
+        totalResults: +response.data.totalResults
+    }
 }

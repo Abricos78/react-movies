@@ -7,6 +7,7 @@ const GET_MOVIES_FAILURE = 'GET_MOVIES_FAILURE'
 
 let initialState = {
     movies: [],
+    totalResults: 0,
     error: ''
 }
 
@@ -20,7 +21,8 @@ export const movies = (state = initialState, {type, payload}) => {
         case GET_MOVIES_SUCCESS:
             return {
                 ...state,
-                movies: payload,
+                movies: payload.data,
+                totalResults: payload.totalResults,
                 loading: false
             }
         default:

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { changeValue, changeRadio } from "../../reducers/search";
 import { getMovies } from "../../reducers/movies";
 
-const Search = () => {
+const Search = (props) => {
     const { value, getMovies, checked, changeValue, changeRadio } = props;
 
     const handleSubmit = event => {

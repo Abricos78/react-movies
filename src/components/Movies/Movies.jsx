@@ -5,7 +5,7 @@ import { getMovies } from '../../reducers/movies'
 import Preloader from '../Preloader/Preloader'
 import Movie from './Movie/Movie'
 
-const Movies = () => {
+const Movies = (props) => {
     const { movies, loading, getMovies } = props
 
     useEffect(() => {
